@@ -145,7 +145,9 @@ Para generar la señal sinusoidal se ha usado síntesis por tabla (wavetable): s
   resultado ha producido. Incluya, en el directorio `work/ejemplos`, los ficheros necesarios para apreciar
   el efecto, e indique, a continuación, la orden necesaria para generar los ficheros de audio usando el
   programa `synth`.
+  
   <img width="604" height="385" alt="imagen" src="https://github.com/user-attachments/assets/352df230-b88c-4599-9530-fb92359e065c" />
+  
   <img width="604" height="436" alt="imagen" src="https://github.com/user-attachments/assets/6c1eb4f9-6dc3-46a2-91a2-dafa12f994e5" />
 
 
