@@ -41,6 +41,12 @@ permitan visualizar el funcionamiento de la curva ADSR.
 Para los cuatro casos, deberá incluir una gráfica en la que se visualice claramente la curva ADSR. Deberá
 añadir la información necesaria para su correcta interpretación, aunque esa información puede reducirse a
 colocar etiquetas y títulos adecuados en la propia gráfica (se valorará positivamente esta alternativa).
+<img width="1600" height="800" alt="generico" src="https://github.com/user-attachments/assets/6b620f6d-a832-4b94-a678-53de2669af33" />
+<img width="1600" height="800" alt="percusivo1" src="https://github.com/user-attachments/assets/8c4b24f3-56cf-4f02-96ce-a368c7c813d6" />
+<img width="1600" height="800" alt="percusivo2" src="https://github.com/user-attachments/assets/58d1fb3b-a5d1-417e-a470-d2e0bfc73149" />
+<img width="1600" height="800" alt="plano" src="https://github.com/user-attachments/assets/8e4deede-10f9-4c01-bd28-5592e6d66c6e" />
+
+
 
 ### Instrumentos Dumb y Seno.
 
@@ -64,6 +70,12 @@ mediante búsqueda de los valores en una tabla.
   resultado ha producido. Incluya, en el directorio `work/ejemplos`, los ficheros necesarios para apreciar
   el efecto, e indique, a continuación, la orden necesaria para generar los ficheros de audio usando el
   programa `synth`.
+  <img width="604" height="385" alt="imagen" src="https://github.com/user-attachments/assets/352df230-b88c-4599-9530-fb92359e065c" />
+  <img width="604" height="436" alt="imagen" src="https://github.com/user-attachments/assets/6c1eb4f9-6dc3-46a2-91a2-dafa12f994e5" />
+
+
+
+
 
 ### Síntesis FM.
 
@@ -81,6 +93,13 @@ deberá venir expresado en semitonos.
   * También puede colgar en el directorio work/doremi otras escalas usando sonidos *interesantes*. Por
     ejemplo, violines, pianos, percusiones, espadas láser de la
 	[Guerra de las Galaxias](https://www.starwars.com/), etc.
+
+<img width="600" height="377" alt="imagen" src="https://github.com/user-attachments/assets/f114f808-3d36-475e-a67d-5a7693de9d23" />
+<img width="603" height="373" alt="imagen" src="https://github.com/user-attachments/assets/72207428-157b-4e3c-8551-84c5c7a3f1fa" />
+<img width="601" height="379" alt="imagen" src="https://github.com/user-attachments/assets/692423a9-e859-456a-af1d-31db00372710" />
+
+
+
 
 ### Orquestación usando el programa synth.
 
