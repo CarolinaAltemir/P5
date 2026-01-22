@@ -54,9 +54,84 @@ Implemente el instrumento `Seno` tomando como modelo el `InstrumentDumb`. La se�
 mediante búsqueda de los valores en una tabla.
 
 - Incluya, a continuación, el código del fichero `seno.cpp` con los métodos de la clase Seno.
+
+#include <iostream>
+#include <math.h>
+#include <stdlib.h>
+
+#include "seno.h"
+#include "keyvalue.h"
+
+using namespace upc;
+using namespace std;
+
+Seno::Seno(const std::string &param)
+  : adsr(SamplingRate, param)
+{
+  bActive = false;
+  x.resize(BSIZE);
+
+  KeyValue kv(param);
+  int N;
+
+  if (!kv.to_int("N", N))
+    N = 2048; 
+
+  tbl.resize(N);
+  phase = 0.0f;
+
+  float step = 2.0f * (float)M_PI / (float)N;
+  float ph = 0.0f;
+  for (int i = 0; i < N; ++i) {
+    tbl[i] = sinf(ph);
+    ph += step;
+  }
+
+  incr_phase = 0.0f;
+  A = 0.0f;
+}
+
+void Seno::command(long cmd, long note, long vel)
+{
+  if (cmd == 9) {              // Llave presionada
+    bActive = true;
+    adsr.start();
+    phase = 0.0f;
+
+    float f0 = 440.0f * powf(2.0f, (note - 69.0f) / 12.0f);
+
+    incr_phase = 2.0f * (float)M_PI * (f0 / (float)SamplingRate) * (float)tbl.size();
+
+    A = (float)vel / 127.0f;
+  }
+  else if (cmd == 8) {         // llave liberada
+    adsr.stop();
+  }
+  else if (cmd == 0) {         // Stop 
+    adsr.end();
+  }
+}
+
+const vector<float> & Seno::synthesize()
+{
+  if (not adsr.active()) {
+    x.assign(x.size(), 0.0f);
+    bActive = false;
+    return x;
+  }
+  else if (not bActive) {
+    return x;
+  }
+
+
 - Explique qué método se ha seguido para asignar un valor a la señal a partir de los contenidos en la tabla,
   e incluya una gráfica en la que se vean claramente (use pelotitas en lugar de líneas) los valores de la
   tabla y los de la señal generada.
+
+Para generar la señal sinusoidal se ha usado síntesis por tabla (wavetable): se construye una tabla con un único periodo de una senoide muestreada en N puntos. Durante la síntesis no se calcula el seno en cada muestra, sino que se emplea un acumulador de fase que avanza una cantidad fija por muestra en función de la frecuencia deseada; en cada instante se toma el valor de salida accediendo a la tabla con el índice entero correspondiente, y cuando el índice supera N se envuelve para repetir el periodo. En la figura “Señal a partir de seno” se representan con pelotitas azules los valores discretos de la tabla (un periodo almacenado) y con pelotitas naranjas los valores de la señal generada al recorrer esa tabla. Se observa que la señal final se construye seleccionando sucesivamente muestras de la tabla conforme avanza el acumulador de fase.
+
+  <img width="581" height="327" alt="imagen" src="https://github.com/user-attachments/assets/5ee42751-18e2-4502-b44c-c97c972a5b04" />
+
 - Si ha implementado la síntesis por tabla almacenada en fichero externo, incluya a continuación el código
   del método `command()`.
 
